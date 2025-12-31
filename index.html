@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐍🪜 Ular Tangga Seru!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Top Banner Ad 
+    <div class="ad-banner ad-top">
+      <iframe data-aa='2399303' src='//acceptable.a-ads.com/2399303' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+    </div> -->
+
+    <div class="game-container">
+      <!-- Music Control -->
+      <div class="music-control">
+        <button id="music-toggle" class="music-btn">
+          <i class="fas fa-music"></i>
+          <span class="music-text">Musik</span>
+        </button>
+        <div class="volume-control">
+          <i class="fas fa-volume-down"></i>
+          <input type="range" id="volume-slider" min="0" max="100" value="30" />
+          <i class="fas fa-volume-up"></i>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="game-header">
+        <div class="header-content">
+          <h1 class="game-title">
+            <span class="title-icon">🐍</span>
+            Ular Tangga!
+            <span class="title-icon">🪜</span>
+          </h1>
+          <p class="game-subtitle">Permainan yang Menyenangkan</p>
+        </div>
+      </header>
+
+      <!-- Mode Selection Screen -->
+      <div id="mode-screen" class="screen active">
+        <div class="mode-container">
+          <div class="mode-header">
+            <h2>🎮 Pilih Mode Permainan</h2>
+            <p>Setiap mode memiliki tantangan yang berbeda!</p>
+          </div>
+
+          <div class="mode-grid">
+            <div class="mode-card" data-mode="friends">
+              <div class="mode-icon">👥</div>
+              <h3>Mode Teman</h3>
+              <p>
+                Tantangan seru dan kompetitif untuk bermain dengan teman-teman
+              </p>
+              <ul class="mode-features">
+                <li>🎯 Tantangan kompetitif</li>
+                <li>😂 Games menghibur</li>
+                <li>🏆 Kompetisi seru</li>
+              </ul>
+              <button class="select-mode-btn">Pilih Mode</button>
+            </div>
+
+            <div class="mode-card" data-mode="couple">
+              <div class="mode-icon">💕</div>
+              <h3>Mode Pacar</h3>
+              <p>Tantangan romantis dan intimate untuk pasangan (2 pemain)</p>
+              <ul class="mode-features">
+                <li>💖 Tantangan romantis</li>
+                <li>🌹 Momen intimate</li>
+                <li>💑 Bonding couple</li>
+              </ul>
+              <button class="select-mode-btn">Pilih Mode</button>
+            </div>
+
+            <div class="mode-card" data-mode="family">
+              <div class="mode-icon">👨‍👩‍👧‍👦</div>
+              <h3>Mode Keluarga</h3>
+              <p>Tantangan ramah keluarga dan edukatif untuk semua usia</p>
+              <ul class="mode-features">
+                <li>🏠 Ramah keluarga</li>
+                <li>📚 Edukatif</li>
+                <li>🤗 Bonding keluarga</li>
+              </ul>
+              <button class="select-mode-btn">Pilih Mode</button>
+            </div>
+          </div>
+
+          <!-- Side Ad for Desktop 
+          <div class="ad-sidebar ad-desktop-only">
+            <iframe data-aa='2399303' src='//acceptable.a-ads.com/2399303' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+          </div> -->
+        </div>
+      </div>
+
+      <!-- Setup Screen -->
+      <div id="setup-screen" class="screen">
+        <div class="setup-container">
+          <div class="setup-card">
+            <div class="setup-header">
+              <button id="back-to-mode" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <div class="setup-title">
+                <h2>🎮 Atur Permainan</h2>
+                <div id="selected-mode-display" class="selected-mode"></div>
+                <p>Siapkan pemain dan mulai petualangan!</p>
+              </div>
+            </div>
+
+            <div class="player-count-section">
+              <label class="section-label">👥 Jumlah Pemain:</label>
+              <div class="player-count-buttons">
+                <button class="count-btn active" data-count="2">
+                  2 Pemain
+                </button>
+                <button class="count-btn" data-count="3">3 Pemain</button>
+                <button class="count-btn" data-count="4">4 Pemain</button>
+              </div>
+            </div>
+
+            <div class="players-setup" id="players-setup">
+              <!-- Player inputs will be generated here -->
+            </div>
+
+            <button id="start-game" class="start-btn">
+              <i class="fas fa-play"></i>
+              Mulai Petualangan!
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar Selection Modal -->
+      <div id="avatar-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content avatar-modal-content">
+          <div class="avatar-header">
+            <h3>🎭 Pilih Avatar</h3>
+            <button class="close-btn" id="close-avatar-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="avatar-categories">
+            <button class="category-btn active" data-category="heroes">
+              🦸 Heroes
+            </button>
+            <button class="category-btn" data-category="animals">
+              🐾 Animals
+            </button>
+            <button class="category-btn" data-category="professions">
+              👨‍💼 Jobs
+            </button>
+            <button class="category-btn" data-category="fantasy">
+              🧙 Fantasy
+            </button>
+            <button class="category-btn" data-category="food">🍕 Food</button>
+            <button class="category-btn" data-category="sports">
+              ⚽ Sports
+            </button>
+          </div>
+          <div class="avatar-grid" id="avatar-grid">
+            <!-- Avatars will be populated here -->
+          </div>
+          <div class="avatar-actions">
+            <button id="confirm-avatar" class="confirm-btn">
+              <i class="fas fa-check"></i>
+              Pilih Avatar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Screen -->
+      <div id="game-screen" class="screen">
+        <!-- Game Header -->
+        <div class="game-header-bar">
+          <button id="back-to-setup" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <div id="current-mode-display" class="current-mode"></div>
+          <div class="game-stats">
+            <span id="game-round">Putaran: 1</span>
+          </div>
+        </div>
+
+        <!-- Game Layout -->
+        <div class="game-layout">
+          <!-- Left Panel - Current Player & Dice -->
+          <div class="left-panel">
+            <div class="current-player-section">
+              <div class="player-turn-card">
+                <div class="turn-label">Giliran:</div>
+                <div class="current-player-info">
+                  <div
+                    id="current-player-avatar"
+                    class="player-avatar-large"
+                  ></div>
+                  <div class="player-details">
+                    <div
+                      id="current-player-name"
+                      class="player-name-large"
+                    ></div>
+                    <div id="current-player-position" class="player-position">
+                      Posisi: 0
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dice-section">
+              <div class="dice-container">
+                <div id="dice" class="dice">
+                  <div class="dice-face">
+                    <i class="fas fa-dice-one"></i>
+                  </div>
+                </div>
+                <button id="roll-dice" class="roll-btn">
+                  <i class="fas fa-hand-pointer"></i>
+                  <span class="roll-text">Lempar Dadu</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mobile Ad Placement 
+            <div class="ad-mobile ad-mobile-only">
+              <iframe data-aa='2399303' src='//acceptable.a-ads.com/2399303' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+            </div> -->
+          </div>
+
+          <!-- Center Panel - Game Board -->
+          <div class="center-panel">
+            <div class="board-container">
+              <div class="game-board" id="game-board">
+                <!-- Board cells will be generated here -->
+              </div>
+
+              <!-- SVG for snakes and ladders -->
+              <svg
+                class="board-overlay"
+                id="board-overlay"
+                viewBox="0 0 1000 1000"
+              >
+                <!-- Snakes and ladders will be drawn here -->
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right Panel - Players List -->
+          <div class="right-panel">
+            <div class="players-sidebar">
+              <h3 class="sidebar-title">🏆 Pemain</h3>
+              <div id="players-list" class="players-list">
+                <!-- Players info will be shown here -->
+              </div>
+            </div>
+
+            <!-- Challenge Statistics -->
+            <div class="challenge-stats" id="challenge-stats">
+              <h4 class="stats-title">📊 Statistik Tantangan</h4>
+              <div class="stats-list">
+                <!-- Challenge stats will be shown here -->
+              </div>
+            </div>
+
+            <div class="challenge-stats">
+              <h4 class="fas fa-info-circle"> Keterangan</h4> <br>
+              ⏫ Naik!<br />
+              🐍 Turun!<br />
+              🃏 Tantangan!
+            </div>
+
+            <!-- Desktop Side Ad 
+            <div class="ad-sidebar ad-desktop-only">
+              <iframe data-aa='2399303' src='//acceptable.a-ads.com/2399303' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Challenge Modal -->
+      <div id="challenge-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content challenge-modal-content">
+          <div class="challenge-header">
+            <div id="challenge-icon" class="challenge-icon-large"></div>
+            <h3 id="challenge-title" class="challenge-title"></h3>
+            <div id="challenge-category" class="challenge-category"></div>
+          </div>
+          <div class="challenge-body">
+            <p id="challenge-description" class="challenge-description"></p>
+            <div id="challenge-content" class="challenge-content"></div>
+            <div id="challenge-timer" class="challenge-timer"></div>
+          </div>
+          <div class="challenge-actions">
+            <button id="challenge-complete" class="challenge-btn complete-btn">
+              <i class="fas fa-check"></i>
+              <span>Selesai!</span>
+            </button>
+            <button id="challenge-skip" class="challenge-btn skip-btn">
+              <i class="fas fa-forward"></i>
+              <span>Lewati (-1 Langkah)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Winner Modal -->
+      <div id="winner-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content winner-modal-content">
+          <div class="winner-celebration">
+            <div class="trophy-animation">🏆</div>
+            <h2 class="winner-title">Selamat!</h2>
+            <div id="winner-avatar" class="winner-avatar"></div>
+            <p id="winner-text" class="winner-text"></p>
+            <div class="confetti">
+              <div class="confetti-piece"></div>
+              <div class="confetti-piece"></div>
+              <div class="confetti-piece"></div>
+              <div class="confetti-piece"></div>
+              <div class="confetti-piece"></div>
+            </div>
+          </div>
+          <div class="winner-actions">
+            <button id="play-again" class="play-again-btn">
+              <i class="fas fa-redo"></i>
+              Main Lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Banner Ad for Mobile 
+    <div class="ad-banner ad-bottom ad-mobile-only">
+      <iframe data-aa='2399303' src='//acceptable.a-ads.com/2399303' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+    </div> -->
+
+    <!-- Background Music Audio -->
+    <audio id="background-music" loop preload="auto">
+        <source src="file/song.mp3" type="audio/mpeg"/>
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
