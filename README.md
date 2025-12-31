@@ -40,8 +40,9 @@ Game klasik **Ular Tangga** versi web dengan fitur multiplayer lokal 2–8 pemai
 ## 🚀 Cara Jalankan
 
 ```bash
-git clone https://github.com/username/snakes-and-ladders.git
+git clone https://github.com/aan-HTML/Permainan-Ular-Tangga
 cd snakes-and-ladders
 # buka file index.html di browser favorit
+
 
 ## 🚀 Dibuat Oleh AaN
